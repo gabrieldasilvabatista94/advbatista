@@ -1,1 +1,397 @@
-<h1>Testando</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:#0a0a0a;color:#efe7d4;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;font-weight:300;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  a:hover{color:#d9b766}
+  img{display:block;max-width:100%}
+  ::selection{background:#c9a14a;color:#0a0a0a}
+  @keyframes waGlow{0%,100%{opacity:.35;transform:scale(0.85)}50%{opacity:.9;transform:scale(1.2)}}
+</style>
+</helmet>
+
+<div style="background:#0a0a0a;color:#efe7d4">
+
+<nav style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:{{ navPad }};backdrop-filter:blur(14px);background:{{ navBg }};border-bottom:1px solid rgba(201,161,74,.08);transition:background .3s ease,padding .3s ease">
+  <a href="#top" style="display:flex;align-items:center;gap:14px">
+    <span style="width:42px;height:42px;display:flex;align-items:center;justify-content:center"><img src="assets/logo-gb.png" alt="GB" style="width:100%;height:100%;object-fit:contain"></span>
+    <span style="font-family:'Cinzel',serif;font-weight:600;letter-spacing:.28em;font-size:13px;color:#c9a14a">Batista Advocacia<small style="display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;letter-spacing:.04em;font-size:11px;color:#807868;text-transform:none;margin-top:2px">Gabriel Batista · OAB/MS 27.773</small></span>
+  </a>
+  <div style="display:{{ navLinksDisplay }};gap:42px;align-items:center">
+    <a href="#manifesto" style="font-family:'Cinzel',serif;font-weight:400;letter-spacing:.22em;font-size:11px;text-transform:uppercase;color:#b8b0a0">Início</a>
+    <a href="#manifesto" style="font-family:'Cinzel',serif;font-weight:400;letter-spacing:.22em;font-size:11px;text-transform:uppercase;color:#b8b0a0">Quem somos</a>
+    <a href="#areas" style="font-family:'Cinzel',serif;font-weight:400;letter-spacing:.22em;font-size:11px;text-transform:uppercase;color:#b8b0a0">Serviços</a>
+    <a href="#method" style="font-family:'Cinzel',serif;font-weight:400;letter-spacing:.22em;font-size:11px;text-transform:uppercase;color:#b8b0a0">Método</a>
+    <a href="#partners" style="font-family:'Cinzel',serif;font-weight:400;letter-spacing:.22em;font-size:11px;text-transform:uppercase;color:#b8b0a0">Parceiros</a>
+    <a href="#contact" style="font-family:'Cinzel',serif;font-weight:400;letter-spacing:.22em;font-size:11px;text-transform:uppercase;color:#b8b0a0">Contato</a>
+  </div>
+  <span style="position:relative;display:inline-flex">
+    <span style="position:absolute;inset:-10px;border-radius:999px;background:radial-gradient(circle,rgba(37,211,102,.55),transparent 70%);animation:waGlow 2.2s ease-in-out infinite;pointer-events:none"></span>
+    <a href="{{ waLink }}" target="_blank" rel="noopener" style="position:relative;z-index:1;font-family:'Cinzel',serif;letter-spacing:.14em;font-size:11px;text-transform:uppercase;background:#25D366;color:#fff;padding:10px 20px 10px 12px;border-radius:999px;display:flex;align-items:center;gap:9px">
+      <svg viewBox="0 0 32 32" width="20" height="20"><path d="M16 4C9.4 4 4 9.4 4 16c0 2.4.7 4.6 1.9 6.5L4 28l5.7-1.8A11.9 11.9 0 0 0 16 28c6.6 0 12-5.4 12-12S22.6 4 16 4z" fill="#fff"></path><path d="M22 19.3c-.3-.2-2-1-2.3-1.1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-1.6-.8-2.7-1.4-3.8-3.2-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.4z" fill="#25D366"></path></svg>
+      WhatsApp
+    </a>
+  </span>
+</nav>
+
+<section id="top" style="position:relative;min-height:100vh;display:grid;grid-template-columns:1.05fr 1fr;align-items:center;padding:140px 56px 80px;overflow:hidden;background:radial-gradient(120% 80% at 70% 30%,#1a1814 0%,#0a0a0a 60%)">
+  <div style="position:absolute;inset:0;background-image:url('assets/hero-texture.png');background-size:cover;background-position:center;opacity:.55;mix-blend-mode:screen;pointer-events:none"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.3) 0%,rgba(10,10,10,.7) 100%);pointer-events:none"></div>
+  <div style="position:relative;z-index:2">
+    <div style="display:flex;align-items:center;gap:18px;margin-bottom:36px">
+      <span style="flex:0 0 60px;height:1px;background:#c9a14a"></span>
+      <span style="font-family:'Cinzel',serif;font-weight:500;letter-spacing:.32em;text-transform:uppercase;font-size:11px;color:#c9a14a">Batista Advocacia · Est. 2022</span>
+    </div>
+    <h1 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(48px,5.6vw,84px);line-height:1.02;letter-spacing:-.018em;margin:0 0 28px;max-width:760px;color:#efe7d4">
+      A defesa <em style="font-style:italic;color:#c9a14a;font-weight:400">intransigente</em><br>
+      do cidadão diante<br>
+      <span style="display:block;color:#efe7d4">do poder do Estado.</span>
+    </h1>
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:22px;color:#b8b0a0;max-width:540px;line-height:1.55;margin-bottom:48px">
+      Atuamos contra a ingerência indevida do poder público sobre o patrimônio, a atividade e a liberdade do particular e da empresa brasileira.
+    </p>
+    <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+      <a href="#contact" style="font-family:'Cinzel',serif;letter-spacing:.2em;font-size:12px;text-transform:uppercase;padding:18px 32px;display:inline-flex;align-items:center;gap:14px;background:#c9a14a;color:#0a0a0a">Falar com um advogado <span style="font-family:serif;font-size:18px;line-height:1">→</span></a>
+      <a href="#areas" style="font-family:'Cinzel',serif;letter-spacing:.2em;font-size:12px;text-transform:uppercase;padding:18px 32px;display:inline-flex;align-items:center;gap:14px;background:transparent;color:#efe7d4;border:1px solid #3a3328">Áreas de atuação</a>
+    </div>
+  </div>
+
+  <div style="position:relative;z-index:2;display:flex;align-items:center;justify-content:center;height:100%">
+    <div style="position:relative;width:min(78%,560px);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center">
+      <span style="position:absolute;inset:0;border:1px solid rgba(201,161,74,.15)"></span>
+      <span style="position:absolute;inset:8px;border:1px solid rgba(201,161,74,.1)"></span>
+      <img src="assets/logo-gb.png" alt="Marca GB" style="position:relative;width:78%;height:78%;object-fit:contain;filter:drop-shadow(0 30px 60px rgba(0,0,0,.6))">
+    </div>
+  </div>
+
+  <div style="position:absolute;bottom:36px;left:56px;right:56px;display:flex;justify-content:space-between;align-items:flex-end;z-index:3;color:#807868;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-family:'Cinzel',serif">
+    <span>Tributário &nbsp;·&nbsp; Cível &nbsp;·&nbsp; Bancário &nbsp;·&nbsp; Imobiliário</span>
+    <span style="display:flex;align-items:center;gap:14px">Role para descobrir <span style="display:inline-block;width:60px;height:1px;background:#8c6a25"></span></span>
+  </div>
+</section>
+
+<section id="manifesto" style="position:relative;padding:160px 56px;background:#0a0a0a;border-top:1px solid #2a2620">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:340px 1fr;gap:80px;align-items:start">
+    <div>
+      <div style="font-family:'Cinzel',serif;font-weight:500;letter-spacing:.32em;text-transform:uppercase;font-size:11px;color:#c9a14a;margin-bottom:28px"><span style="color:#807868;margin-right:14px;letter-spacing:.18em">01</span>Manifesto</div>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-style:italic;font-size:36px;color:#c9a14a;line-height:1.15;margin:0">O cidadão<br>vem antes<br>do Estado.</h3>
+    </div>
+    <div>
+      <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(26px,2.2vw,34px);line-height:1.4;color:#efe7d4;letter-spacing:-.005em">
+        <span style="font-family:'Cinzel',serif;font-weight:600;font-size:84px;float:left;line-height:.85;margin:6px 18px 0 0;color:#c9a14a">N</span>asce a República para servir o cidadão — e não o contrário. Quando o Estado avança sobre a propriedade, sobre o negócio honesto, sobre a vida privada do brasileiro, alguém precisa <strong style="color:#c9a14a;font-weight:500;font-style:italic">opor-lhe limite</strong>. É essa a vocação deste escritório.
+        <br><br>
+        Trabalhamos onde o poder público insiste em exceder seus próprios limites: na cobrança tributária que ignora a Constituição, no banco que se vale da máquina pública para constranger, na licença que se transforma em embaraço, na sanção que se confunde com confisco. Defendemos quem produz, quem empreende e quem apenas quer ser deixado em paz.
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1200px;margin:80px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid #2a2620">
+    <div style="padding:48px 36px;border-right:1px solid #2a2620">
+      <div style="font-family:'Cinzel',serif;font-size:12px;letter-spacing:.3em;color:#c9a14a;margin-bottom:24px">I.</div>
+      <h4 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:26px;line-height:1.2;margin:0 0 16px;color:#efe7d4">Liberdade individual</h4>
+      <p style="margin:0;font-size:15px;line-height:1.65;color:#b8b0a0;font-weight:300">A pessoa é fim, nunca meio. Toda restrição estatal sobre o patrimônio, a atividade ou a vida do cidadão deve ser estritamente justificada — e provada.</p>
+    </div>
+    <div style="padding:48px 36px;border-right:1px solid #2a2620">
+      <div style="font-family:'Cinzel',serif;font-size:12px;letter-spacing:.3em;color:#c9a14a;margin-bottom:24px">II.</div>
+      <h4 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:26px;line-height:1.2;margin:0 0 16px;color:#efe7d4">Estrita legalidade</h4>
+      <p style="margin:0;font-size:15px;line-height:1.65;color:#b8b0a0;font-weight:300">O agente público faz somente o que a lei autoriza. Discricionariedade não é cheque em branco: é, antes de tudo, dever de fundamentação.</p>
+    </div>
+    <div style="padding:48px 36px">
+      <div style="font-family:'Cinzel',serif;font-size:12px;letter-spacing:.3em;color:#c9a14a;margin-bottom:24px">III.</div>
+      <h4 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:26px;line-height:1.2;margin:0 0 16px;color:#efe7d4">Defesa intransigente</h4>
+      <p style="margin:0;font-size:15px;line-height:1.65;color:#b8b0a0;font-weight:300">Não há cliente pequeno nem causa fácil. Há cidadão sob pressão e há a lei do seu lado — e nós levamos isso até a última instância.</p>
+    </div>
+  </div>
+</section>
+
+<section id="areas" style="position:relative;padding:140px 56px;background:linear-gradient(180deg,#0a0a0a 0%,#0d0c0a 100%);border-top:1px solid #2a2620">
+  <div style="max-width:1200px;margin:0 auto 80px;display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:end">
+    <div>
+      <div style="font-family:'Cinzel',serif;font-weight:500;letter-spacing:.32em;text-transform:uppercase;font-size:11px;color:#c9a14a;margin-bottom:24px"><span style="color:#807868;margin-right:14px;letter-spacing:.18em">02</span>Áreas de atuação</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(38px,4.6vw,68px);line-height:1.05;letter-spacing:-.012em;margin:0;color:#efe7d4">Onde o Estado avança,<br><em style="font-style:italic;color:#c9a14a;font-weight:400">nós estabelecemos limite.</em></h2>
+    </div>
+    <p style="max-width:480px;margin:0;line-height:1.65;color:#b8b0a0;font-size:16px;font-weight:300">Quatro frentes de combate jurídico — todas voltadas à mesma vocação: proteger o particular contra a ingerência indevida do poder público e dos grandes agentes a ele associados.</p>
+  </div>
+
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:#2a2620;border:1px solid #2a2620">
+    <div style="background:#0a0a0a;padding:56px 48px;min-height:340px;display:flex;flex-direction:column;justify-content:space-between">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:48px">
+        <div style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:.3em;color:#c9a14a;padding-top:6px">01 / Tributário</div>
+        <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 48 48" style="width:100%;height:100%;stroke:#c9a14a;fill:none;stroke-width:1.2"><path d="M24 4 L42 14 V34 L24 44 L6 34 V14 Z"></path><path d="M16 22 L24 26 L32 22"></path><path d="M24 26 V36"></path></svg></div>
+      </div>
+      <div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:42px;line-height:1.05;margin:0 0 18px;color:#efe7d4;letter-spacing:-.01em">Direito <em style="font-style:italic;color:#c9a14a">tributário</em></h3>
+        <p style="margin:0;font-size:15px;color:#b8b0a0;max-width:420px;line-height:1.65;font-weight:300">Defesa em execuções fiscais, anulação de autos de infração, recuperação de tributos pagos indevidamente, planejamento tributário lícito e contencioso administrativo perante a Receita e fazendas estaduais e municipais.</p>
+      </div>
+      <a href="#contact" style="margin-top:36px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#c9a14a;display:inline-flex;align-items:center;gap:14px">Discutir minha causa <span>→</span></a>
+    </div>
+
+    <div style="background:#0a0a0a;padding:56px 48px;min-height:340px;display:flex;flex-direction:column;justify-content:space-between">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:48px">
+        <div style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:.3em;color:#c9a14a;padding-top:6px">02 / Cível</div>
+        <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 48 48" style="width:100%;height:100%;stroke:#c9a14a;fill:none;stroke-width:1.2"><path d="M8 40 H40"></path><path d="M24 8 V40"></path><path d="M14 22 L24 8 L34 22"></path><path d="M14 22 L10 32 H18 Z"></path><path d="M34 22 L30 32 H38 Z"></path></svg></div>
+      </div>
+      <div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:42px;line-height:1.05;margin:0 0 18px;color:#efe7d4;letter-spacing:-.01em">Direito <em style="font-style:italic;color:#c9a14a">cível</em></h3>
+        <p style="margin:0;font-size:15px;color:#b8b0a0;max-width:420px;line-height:1.65;font-weight:300">Responsabilidade civil contra abusos do Estado, indenizações, contratos, sucessões, direito de família e demandas em que o particular precisa de defesa firme diante da máquina pública ou de grandes contrapartes.</p>
+      </div>
+      <a href="#contact" style="margin-top:36px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#c9a14a;display:inline-flex;align-items:center;gap:14px">Discutir minha causa <span>→</span></a>
+    </div>
+
+    <div style="background:#0a0a0a;padding:56px 48px;min-height:340px;display:flex;flex-direction:column;justify-content:space-between">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:48px">
+        <div style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:.3em;color:#c9a14a;padding-top:6px">03 / Bancário</div>
+        <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 48 48" style="width:100%;height:100%;stroke:#c9a14a;fill:none;stroke-width:1.2"><path d="M6 18 L24 8 L42 18"></path><path d="M8 18 V36"></path><path d="M40 18 V36"></path><path d="M16 22 V34"></path><path d="M24 22 V34"></path><path d="M32 22 V34"></path><path d="M6 40 H42"></path></svg></div>
+      </div>
+      <div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:42px;line-height:1.05;margin:0 0 18px;color:#efe7d4;letter-spacing:-.01em">Direito <em style="font-style:italic;color:#c9a14a">bancário</em></h3>
+        <p style="margin:0;font-size:15px;color:#b8b0a0;max-width:420px;line-height:1.65;font-weight:300">Revisão de contratos abusivos, defesa contra cobranças indevidas, juros e tarifas ilegais, encerramento unilateral de conta, negativações injustas e enfrentamento de práticas que se valem do poder econômico para constranger o correntista.</p>
+      </div>
+      <a href="#contact" style="margin-top:36px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#c9a14a;display:inline-flex;align-items:center;gap:14px">Discutir minha causa <span>→</span></a>
+    </div>
+
+    <div style="background:#0a0a0a;padding:56px 48px;min-height:340px;display:flex;flex-direction:column;justify-content:space-between">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:48px">
+        <div style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:.3em;color:#c9a14a;padding-top:6px">04 / Imobiliário</div>
+        <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 48 48" style="width:100%;height:100%;stroke:#c9a14a;fill:none;stroke-width:1.2"><path d="M8 22 L24 10 L40 22 V40 H8 Z"></path><path d="M20 40 V28 H28 V40"></path><path d="M14 18 V12 H18"></path></svg></div>
+      </div>
+      <div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:42px;line-height:1.05;margin:0 0 18px;color:#efe7d4;letter-spacing:-.01em">Direito <em style="font-style:italic;color:#c9a14a">imobiliário</em></h3>
+        <p style="margin:0;font-size:15px;color:#b8b0a0;max-width:420px;line-height:1.65;font-weight:300">Disputas possessórias, usucapião, regularização fundiária, defesa contra desapropriações abusivas, contratos de compra e venda, locação, incorporação e enfrentamento da burocracia municipal que entrava o uso legítimo da propriedade.</p>
+      </div>
+      <a href="#contact" style="margin-top:36px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#c9a14a;display:inline-flex;align-items:center;gap:14px">Discutir minha causa <span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="about" style="position:relative;padding:160px 56px;background:#0d0c0a;border-top:1px solid #2a2620;overflow:hidden">
+  <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:0.85fr 1.15fr;gap:90px;align-items:center">
+    <div style="position:relative;aspect-ratio:3/4;background:#000;overflow:hidden">
+      <span style="position:absolute;inset:-22px;border:1px solid rgba(201,161,74,.18);pointer-events:none;z-index:0"></span>
+      <img src="assets/portrait-gabriel.jpg" alt="Dr. Gabriel Batista" style="width:100%;height:100%;object-fit:cover;filter:contrast(1.05) brightness(.96);position:relative;z-index:1">
+      <span style="position:absolute;inset:0;border:1px solid #3a3328;pointer-events:none;z-index:2"></span>
+      <span style="position:absolute;inset:-1px;background:linear-gradient(180deg,transparent 60%,rgba(10,10,10,.6) 100%);pointer-events:none;z-index:1"></span>
+      <span style="position:absolute;left:-30px;bottom:36px;z-index:3;background:#c9a14a;color:#0a0a0a;padding:14px 22px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.28em;text-transform:uppercase">OAB/MS 27.773</span>
+    </div>
+    <div>
+      <div style="font-family:'Cinzel',serif;font-weight:500;letter-spacing:.32em;text-transform:uppercase;font-size:11px;color:#c9a14a;margin-bottom:28px"><span style="color:#807868;margin-right:14px;letter-spacing:.18em">03</span>Quem está à frente</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(38px,4.6vw,68px);line-height:1.05;letter-spacing:-.012em;margin:0 0 32px;color:#efe7d4">Advocacia feita <em style="font-style:italic;color:#c9a14a;font-weight:400">pessoalmente</em> — não terceirizada.</h2>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:22px;line-height:1.55;color:#b8b0a0;border-left:1px solid #c9a14a;padding:6px 0 6px 28px;margin:0 0 36px">“Cada processo passa pelas minhas mãos. O cliente fala com o advogado, e não com um departamento. Esta é a única forma de defender uma causa com a seriedade que ela exige.”</p>
+      <p style="line-height:1.65;color:#b8b0a0;font-size:16px;font-weight:300;margin:0">Atuação de mais de uma década no enfrentamento de ilegalidades praticadas pelo poder público e por grandes instituições contra cidadãos, profissionais liberais e empresas. Trabalho artesanal, doutrina aplicada e estratégia individual para cada caso.</p>
+
+      <div style="margin-top:42px;display:grid;grid-template-columns:repeat(3,auto);gap:42px;padding-top:32px;border-top:1px solid #2a2620">
+        <div>
+          <div style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.3em;color:#c9a14a;margin-bottom:10px;text-transform:uppercase">Atuação</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#efe7d4">Nacional</div>
+        </div>
+        <div>
+          <div style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.3em;color:#c9a14a;margin-bottom:10px;text-transform:uppercase">Foco</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#efe7d4">Tributário &amp; Cível</div>
+        </div>
+        <div>
+          <div style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.3em;color:#c9a14a;margin-bottom:10px;text-transform:uppercase">Postura</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#efe7d4">Contenciosa</div>
+        </div>
+      </div>
+
+      <div style="margin-top:48px;display:flex;align-items:center;gap:24px">
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:30px;color:#c9a14a">Gabriel Batista</div>
+          <div style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.28em;color:#807868;text-transform:uppercase">Advogado titular · OAB/MS 27.773</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="method" style="position:relative;padding:140px 56px;border-top:1px solid #2a2620;background:#0a0a0a">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="margin-bottom:80px;max-width:760px">
+      <div style="font-family:'Cinzel',serif;font-weight:500;letter-spacing:.32em;text-transform:uppercase;font-size:11px;color:#c9a14a"><span style="color:#807868;margin-right:14px;letter-spacing:.18em">04</span>Método</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(38px,4.6vw,68px);line-height:1.05;letter-spacing:-.012em;margin:24px 0 0;color:#efe7d4">Da primeira conversa<br>à <em style="font-style:italic;color:#c9a14a;font-weight:400">última instância.</em></h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid #2a2620;border-bottom:1px solid #2a2620">
+      <div style="padding:48px 28px 48px 0;border-right:1px solid #2a2620">
+        <div style="font-family:'Cinzel',serif;font-weight:600;font-size:14px;letter-spacing:.3em;color:#c9a14a;margin-bottom:32px;display:flex;align-items:center;gap:18px"><span style="width:8px;height:8px;background:#c9a14a;transform:rotate(45deg);display:inline-block"></span>Etapa I</div>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:26px;line-height:1.15;margin:0 0 14px;color:#efe7d4">Escuta e diagnóstico</h4>
+        <p style="margin:0;font-size:14px;color:#b8b0a0;line-height:1.65;font-weight:300">Conversa direta com o advogado para entender o conflito, ler documentos e mapear o que o Estado ou a contraparte está exigindo — e o que a lei realmente permite.</p>
+      </div>
+      <div style="padding:48px 28px 48px 0;border-right:1px solid #2a2620">
+        <div style="font-family:'Cinzel',serif;font-weight:600;font-size:14px;letter-spacing:.3em;color:#c9a14a;margin-bottom:32px;display:flex;align-items:center;gap:18px"><span style="width:8px;height:8px;background:#c9a14a;transform:rotate(45deg);display:inline-block"></span>Etapa II</div>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:26px;line-height:1.15;margin:0 0 14px;color:#efe7d4">Tese e estratégia</h4>
+        <p style="margin:0;font-size:14px;color:#b8b0a0;line-height:1.65;font-weight:300">Construção da defesa em cima da Constituição, da lei e da doutrina aplicável. Definição de prazos, riscos, custos e do que se pode efetivamente alcançar.</p>
+      </div>
+      <div style="padding:48px 28px 48px 0;border-right:1px solid #2a2620">
+        <div style="font-family:'Cinzel',serif;font-weight:600;font-size:14px;letter-spacing:.3em;color:#c9a14a;margin-bottom:32px;display:flex;align-items:center;gap:18px"><span style="width:8px;height:8px;background:#c9a14a;transform:rotate(45deg);display:inline-block"></span>Etapa III</div>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:26px;line-height:1.15;margin:0 0 14px;color:#efe7d4">Atuação contenciosa</h4>
+        <p style="margin:0;font-size:14px;color:#b8b0a0;line-height:1.65;font-weight:300">Petições e sustentações orais conduzidas pessoalmente. Trabalho artesanal — sem terceirização — em sede administrativa e judicial, com acompanhamento contínuo.</p>
+      </div>
+      <div style="padding:48px 0">
+        <div style="font-family:'Cinzel',serif;font-weight:600;font-size:14px;letter-spacing:.3em;color:#c9a14a;margin-bottom:32px;display:flex;align-items:center;gap:18px"><span style="width:8px;height:8px;background:#c9a14a;transform:rotate(45deg);display:inline-block"></span>Etapa IV</div>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:26px;line-height:1.15;margin:0 0 14px;color:#efe7d4">Esgotamento das vias</h4>
+        <p style="margin:0;font-size:14px;color:#b8b0a0;line-height:1.65;font-weight:300">Recursos, embargos e medidas cabíveis até as instâncias superiores. Onde houver uma porta legítima de defesa do cliente, ela será aberta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="partners" style="padding:120px 56px;background:#0d0c0a;border-top:1px solid #2a2620;text-align:center">
+  <div style="font-family:'Cinzel',serif;font-weight:500;letter-spacing:.32em;text-transform:uppercase;font-size:11px;color:#c9a14a;margin-bottom:24px"><span style="color:#807868;margin-right:14px;letter-spacing:.18em">05</span>Parceiros</div>
+  <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(38px,4.6vw,68px);line-height:1.05;letter-spacing:-.012em;margin:0 auto 60px;max-width:840px;color:#efe7d4">Trabalho em <em style="font-style:italic;color:#c9a14a;font-weight:400">rede</em>,<br>resultado em causa própria.</h2>
+
+  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#2a2620;border:1px solid #2a2620">
+    <div style="background:#0a0a0a;padding:36px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;min-height:220px">
+      <img src="assets/partner-droptax.png" alt="DropTax" style="max-width:150px;max-height:130px;width:auto;height:auto;object-fit:contain">
+      <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:#807868">Recuperação tributária — PR</span>
+    </div>
+    <div style="background:#0a0a0a;padding:36px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;min-height:220px">
+      <span style="background:#f5f1e8;padding:20px 26px;display:flex;align-items:center;justify-content:center"><img src="assets/partner-oceantax.png" alt="Ocean Tax" style="max-width:200px;max-height:68px;width:auto;height:auto;object-fit:contain"></span>
+      <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:#807868">Recuperação tributária — RS</span>
+    </div>
+    <div style="background:#0a0a0a;padding:36px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;min-height:220px">
+      <span style="background:#f5f1e8;padding:20px 26px;display:flex;align-items:center;justify-content:center"><img src="assets/partner-carbonari.png" alt="Carbonari Advocacia" style="max-width:190px;max-height:92px;width:auto;height:auto;object-fit:contain"></span>
+      <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:#807868">Trabalhista — Campo Grande/MS</span>
+    </div>
+    <div style="background:#0a0a0a;padding:36px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;min-height:220px">
+      <img src="assets/partner-marques.png" alt="Marques Advocacia" style="max-width:220px;max-height:100px;width:auto;height:auto;object-fit:contain">
+      <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:#807868">Cível — Campo Grande/MS</span>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding:160px 56px;border-top:1px solid #2a2620;background:radial-gradient(80% 80% at 30% 20%,#15130e 0%,#0a0a0a 70%);position:relative;overflow:hidden">
+  <div style="position:absolute;top:-40%;right:-10%;width:80%;height:160%;background:radial-gradient(closest-side,rgba(201,161,74,.06),transparent 70%);pointer-events:none"></div>
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:90px;position:relative">
+    <div>
+      <div style="font-family:'Cinzel',serif;font-weight:500;letter-spacing:.32em;text-transform:uppercase;font-size:11px;color:#c9a14a"><span style="color:#807868;margin-right:14px;letter-spacing:.18em">06</span>Contato</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(38px,4.6vw,68px);line-height:1.05;letter-spacing:-.012em;margin:24px 0 28px;color:#efe7d4">Sua causa<br>merece uma <em style="font-style:italic;color:#c9a14a;font-weight:400">conversa séria.</em></h2>
+      <p style="max-width:480px;margin-bottom:48px;color:#b8b0a0;line-height:1.65;font-size:16px;font-weight:300">A primeira escuta é sempre direta com o advogado responsável. Conte o que aconteceu — avaliamos a viabilidade da defesa e o caminho jurídico antes de qualquer compromisso.</p>
+
+      <div style="display:flex;flex-direction:column;gap:28px">
+        <div style="display:grid;grid-template-columns:140px 1fr;gap:20px;padding-bottom:24px;border-bottom:1px solid #2a2620">
+          <div style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:.28em;color:#c9a14a;text-transform:uppercase;padding-top:4px">Telefone / WhatsApp</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#efe7d4;line-height:1.3">{{ waPhoneDisplay }}<small style="display:block;font-size:14px;color:#807868;margin-top:4px;font-style:italic">Atendimento de segunda a sexta, 9h–18h</small></div>
+        </div>
+        <div style="display:grid;grid-template-columns:140px 1fr;gap:20px;padding-bottom:24px;border-bottom:1px solid #2a2620">
+          <div style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:.28em;color:#c9a14a;text-transform:uppercase;padding-top:4px">E-mail</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#efe7d4;line-height:1.3">gabrieldasilvabatista.94@gmail.com<small style="display:block;font-size:14px;color:#807868;margin-top:4px;font-style:italic">Retorno em até 24h úteis</small></div>
+        </div>
+        <div style="display:grid;grid-template-columns:140px 1fr;gap:20px;padding-bottom:24px;border-bottom:1px solid #2a2620">
+          <div style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:.28em;color:#c9a14a;text-transform:uppercase;padding-top:4px">Endereço</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#efe7d4;line-height:1.3">Rua 27 de Julho, nº 1173 — Centro<small style="display:block;font-size:14px;color:#807868;margin-top:4px;font-style:italic">Anastácio / MS · CEP 79.210-000</small></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:rgba(20,18,14,.6);border:1px solid #2a2620;padding:56px 48px;backdrop-filter:blur(4px);display:flex;flex-direction:column;align-items:flex-start;justify-content:center">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:32px;margin:0 0 8px;color:#efe7d4">Fale agora pelo <em style="font-style:italic;color:#c9a14a">WhatsApp</em></h3>
+      <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:#807868;margin-bottom:32px">Resposta direta com o advogado, sem intermediários.</div>
+      <p style="margin:0 0 40px;color:#b8b0a0;line-height:1.65;font-size:16px;font-weight:300">Envie sua mensagem e conte brevemente o que aconteceu — datas, valores, notificações recebidas. O retorno é pessoal.</p>
+      <span style="position:relative;display:flex;width:100%">
+        <span style="position:absolute;inset:-16px;border-radius:12px;background:radial-gradient(circle,rgba(37,211,102,.5),transparent 70%);animation:waGlow 2.2s ease-in-out infinite;pointer-events:none"></span>
+        <a href="{{ waLink }}" target="_blank" rel="noopener" style="position:relative;z-index:1;font-family:'Cinzel',serif;letter-spacing:.18em;font-size:13px;text-transform:uppercase;padding:18px 32px;display:inline-flex;align-items:center;justify-content:center;gap:14px;background:#25D366;color:#fff;width:100%;border-radius:6px">
+          <svg viewBox="0 0 32 32" width="22" height="22"><path d="M16 4C9.4 4 4 9.4 4 16c0 2.4.7 4.6 1.9 6.5L4 28l5.7-1.8A11.9 11.9 0 0 0 16 28c6.6 0 12-5.4 12-12S22.6 4 16 4z" fill="#fff"></path><path d="M22 19.3c-.3-.2-2-1-2.3-1.1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-1.6-.8-2.7-1.4-3.8-3.2-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.4z" fill="#25D366"></path></svg>
+          Conversar no WhatsApp
+        </a>
+      </span>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#070706;padding:80px 56px 36px;border-top:1px solid #2a2620">
+  <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:60px;padding-bottom:56px;border-bottom:1px solid #2a2620">
+    <div>
+      <div style="display:flex;align-items:flex-start;gap:14px">
+        <span style="width:42px;height:42px;display:flex;align-items:center;justify-content:center"><img src="assets/logo-gb.png" alt="GB" style="width:100%;height:100%;object-fit:contain"></span>
+        <span style="font-family:'Cinzel',serif;font-weight:600;letter-spacing:.28em;font-size:14px;color:#c9a14a">Batista Advocacia<small style="display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;letter-spacing:.04em;font-size:11px;color:#807868;text-transform:none;margin-top:2px">Advocacia e Consultoria Jurídica</small></span>
+      </div>
+      <p style="margin:24px 0 0;font-size:14px;max-width:340px;color:#b8b0a0;line-height:1.65;font-weight:300">Tributário, Cível, Bancário e Imobiliário. Em defesa intransigente do cidadão brasileiro contra a ingerência do Estado. Anastácio / MS · desde 2022.</p>
+    </div>
+    <div>
+      <h5 style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:.28em;color:#c9a14a;margin:0 0 22px;text-transform:uppercase;font-weight:500">Navegação</h5>
+      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px">
+        <li><a href="#manifesto" style="color:#b8b0a0;font-family:'Cormorant Garamond',serif;font-size:17px">Quem somos</a></li>
+        <li><a href="#areas" style="color:#b8b0a0;font-family:'Cormorant Garamond',serif;font-size:17px">Serviços</a></li>
+        <li><a href="#method" style="color:#b8b0a0;font-family:'Cormorant Garamond',serif;font-size:17px">Método</a></li>
+        <li><a href="#partners" style="color:#b8b0a0;font-family:'Cormorant Garamond',serif;font-size:17px">Parceiros</a></li>
+        <li><a href="#contact" style="color:#b8b0a0;font-family:'Cormorant Garamond',serif;font-size:17px">Contato</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:.28em;color:#c9a14a;margin:0 0 22px;text-transform:uppercase;font-weight:500">Atuação</h5>
+      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px">
+        <li><a href="#areas" style="color:#b8b0a0;font-family:'Cormorant Garamond',serif;font-size:17px">Direito Tributário</a></li>
+        <li><a href="#areas" style="color:#b8b0a0;font-family:'Cormorant Garamond',serif;font-size:17px">Direito Cível</a></li>
+        <li><a href="#areas" style="color:#b8b0a0;font-family:'Cormorant Garamond',serif;font-size:17px">Direito Bancário</a></li>
+        <li><a href="#areas" style="color:#b8b0a0;font-family:'Cormorant Garamond',serif;font-size:17px">Direito Imobiliário</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:.28em;color:#c9a14a;margin:0 0 22px;text-transform:uppercase;font-weight:500">Contato</h5>
+      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px">
+        <li><a href="tel:+5567998809977" style="color:#b8b0a0;font-family:'Cormorant Garamond',serif;font-size:17px">(67) 9 9880-9977</a></li>
+        <li><a href="mailto:gabrieldasilvabatista.94@gmail.com" style="color:#b8b0a0;font-family:'Cormorant Garamond',serif;font-size:17px">E-mail</a></li>
+        <li><a href="{{ waLink }}" target="_blank" rel="noopener" style="color:#b8b0a0;font-family:'Cormorant Garamond',serif;font-size:17px">WhatsApp</a></li>
+        <li><a href="#contact" style="color:#b8b0a0;font-family:'Cormorant Garamond',serif;font-size:17px">Rua 27 de Julho, 1173 — Anastácio/MS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div style="max-width:1280px;margin:0 auto;padding-top:32px;display:flex;justify-content:space-between;align-items:center;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.28em;color:#807868;text-transform:uppercase">
+    <span>© Batista Advocacia · Todos os direitos reservados</span>
+    <span>OAB/MS 27.773 · Sigilo profissional</span>
+  </div>
+</footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;5567998809977&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contato&quot;},&quot;whatsappMessage&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Olá, gostaria de agendar uma consulta.&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contato&quot;}}">
+class Component extends DCLogic {
+  state = { scrolled: false, narrow: false };
+
+  componentDidMount() {
+    this.onScroll = () => {
+      const isScrolled = window.scrollY > 60;
+      if (isScrolled !== this.state.scrolled) this.setState({ scrolled: isScrolled });
+    };
+    this.onResize = () => {
+      const isNarrow = window.innerWidth < 1180;
+      if (isNarrow !== this.state.narrow) this.setState({ narrow: isNarrow });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('resize', this.onResize, { passive: true });
+    this.onResize();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('resize', this.onResize);
+  }
+
+  renderVals() {
+    const digits = (this.props.whatsappNumber || '5567998809977').replace(/\D/g, '');
+    const message = this.props.whatsappMessage || 'Olá, gostaria de agendar uma consulta.';
+    return {
+      navBg: this.state.scrolled ? 'rgba(10,10,10,.92)' : 'rgba(10,10,10,.55)',
+      navPad: this.state.scrolled ? '16px 56px' : '22px 56px',
+      navLinksDisplay: this.state.narrow ? 'none' : 'flex',
+      waLink: `https://wa.me/${digits}?text=${encodeURIComponent(message)}`,
+      waPhoneDisplay: '(67) 9 9880-9977'
+    };
+  }
+}
+</script>
+</body>
+</html>
