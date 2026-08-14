@@ -22,65 +22,86 @@
   nav.scrolled{padding:16px 56px;background:rgba(10,10,10,.92)}
   .nav-links{display:flex;gap:42px;align-items:center}
 
+  /* ===== MENU MOBILE ===== */
+  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:34px;height:34px;background:transparent;border:none;cursor:pointer;padding:0;flex:0 0 auto}
+  .nav-toggle-bar{display:block;width:100%;height:2px;background:#c9a14a;transition:transform .25s ease,opacity .25s ease}
+  .nav-toggle.open .nav-toggle-bar:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav-toggle.open .nav-toggle-bar:nth-child(2){opacity:0}
+  .nav-toggle.open .nav-toggle-bar:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .mobile-menu{position:fixed;inset:0;z-index:49;background:rgba(10,10,10,.97);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;opacity:0;pointer-events:none;transform:translateY(-12px);transition:opacity .25s ease,transform .25s ease}
+  .mobile-menu.open{opacity:1;pointer-events:auto;transform:translateY(0)}
+  .mobile-menu a{font-family:'Cinzel',serif;font-weight:400;letter-spacing:.22em;font-size:15px;text-transform:uppercase;color:#efe7d4}
+  .mobile-menu a:hover{color:#d9b766}
+
   /* ===== RESPONSIVO ===== */
   @media (max-width: 1180px) {
     .nav-links{display:none}
+    .nav-toggle{display:flex}
   }
 
   @media (max-width: 1024px) {
     nav, nav.scrolled{padding:16px 28px}
-    section{padding-left:28px;padding-right:28px}
-    #top{grid-template-columns:1fr;padding-top:150px;gap:56px;min-height:auto}
-    #manifesto-grid{grid-template-columns:1fr;gap:36px}
-    #manifesto-pillars{grid-template-columns:1fr}
-    #areas-head{grid-template-columns:1fr;gap:32px;align-items:start}
-    #about-grid{grid-template-columns:1fr;gap:48px}
-    #contact-grid{grid-template-columns:1fr;gap:56px}
+    section{padding-left:28px !important;padding-right:28px !important}
+    #top{grid-template-columns:1fr !important;padding-top:150px !important;gap:56px;min-height:auto !important}
+    #manifesto-grid{grid-template-columns:1fr !important;gap:36px !important}
+    #manifesto-pillars{grid-template-columns:1fr !important}
+    #areas-head{grid-template-columns:1fr !important;gap:32px !important;align-items:start !important}
+    #about-grid{grid-template-columns:1fr !important;gap:48px !important}
+    #contact-grid{grid-template-columns:1fr !important;gap:56px !important}
+    #top > div, #manifesto-grid > div, #manifesto-pillars > div, #areas-head > *, #about-grid > div, #contact-grid > div{min-width:0 !important}
   }
 
   @media (max-width: 640px) {
     nav, nav.scrolled{padding:14px 20px}
     .nav-brand-text{font-size:11px !important}
     .nav-wa-btn{padding:9px 16px 9px 10px !important;font-size:10px !important}
-    section{padding-top:90px;padding-bottom:90px;padding-left:20px;padding-right:20px}
+    section{padding-top:72px !important;padding-bottom:72px !important;padding-left:20px !important;padding-right:20px !important}
 
-    #top{padding-top:130px;padding-bottom:56px}
+    #top{padding-top:120px !important;padding-bottom:48px !important}
     #top h1{font-size:38px !important}
     #top .hero-sub{font-size:18px !important}
-    .hero-ctas{flex-direction:column;align-items:stretch}
+    .hero-ctas{flex-direction:column;align-items:stretch !important}
     .hero-ctas a{justify-content:center}
-    .hero-tagbar{position:static;margin-top:56px;flex-direction:column;align-items:flex-start;gap:14px}
+    .hero-tagbar{position:static !important;left:0 !important;right:0 !important;bottom:0 !important;margin-top:44px;flex-direction:column;align-items:flex-start !important;gap:14px}
     .hero-tagbar span:first-child{font-size:10px}
 
     #manifesto h3{font-size:28px !important}
     .manifesto-copy{font-size:22px !important}
     .manifesto-dropcap{font-size:60px !important;margin:2px 10px 0 0 !important}
-    #manifesto-pillars{margin-top:56px}
-    #manifesto-pillars > div{border-right:none !important;border-bottom:1px solid #2a2620;padding:36px 0}
+    #manifesto-pillars{margin-top:40px !important}
+    #manifesto-pillars > div{border-right:none !important;border-bottom:1px solid #2a2620;padding:28px 0 !important}
     #manifesto-pillars > div:last-child{border-bottom:none}
 
     #areas h2{font-size:32px !important}
-    #areas-cards{grid-template-columns:1fr}
+    #areas-cards{grid-template-columns:1fr !important}
+    #areas-cards > div{padding:40px 28px !important;min-height:auto !important}
     #areas-cards h3{font-size:32px !important}
 
-    #about img{max-height:420px}
+    #about img{max-height:360px}
     #about h2{font-size:32px !important}
-    .about-stats{grid-template-columns:1fr 1fr;row-gap:24px}
+    .about-stats{grid-template-columns:1fr 1fr !important;row-gap:24px !important}
 
     #method h2{font-size:32px !important}
-    #method-steps{grid-template-columns:1fr;border-bottom:none}
-    #method-steps > div{border-right:none !important;border-bottom:1px solid #2a2620;padding:36px 0}
+    #method-steps{grid-template-columns:1fr !important;border-bottom:none !important}
+    #method-steps > div{border-right:none !important;border-bottom:1px solid #2a2620;padding:28px 0 !important}
     #method-steps > div:last-child{border-bottom:none}
 
     #partners h2{font-size:32px !important}
-    #partners-grid{grid-template-columns:1fr 1fr}
+    #partners-grid{grid-template-columns:1fr 1fr !important}
+    #partners-grid img{max-width:100px !important;max-height:70px !important}
+    #partners-grid > div{padding:22px 14px !important;min-height:170px !important;min-width:0 !important}
+    #partners-grid > div > span:first-child{padding:10px 14px !important;max-width:100% !important;min-width:0 !important;box-sizing:border-box !important}
+    #partners-grid > div span:last-child{display:block !important;width:100% !important;text-align:center !important}
 
     #contact h2{font-size:32px !important}
     .contact-row{grid-template-columns:1fr !important;gap:6px !important}
+    .contact-row div{overflow-wrap:break-word !important;word-break:break-word !important}
 
-    footer{padding:56px 20px 28px}
-    .footer-grid{grid-template-columns:1fr;gap:40px}
-    .footer-bottom{flex-direction:column;align-items:flex-start;gap:10px}
+    footer{padding:56px 20px 28px !important}
+    .footer-grid{grid-template-columns:1fr !important;gap:40px !important}
+    .footer-bottom{flex-direction:column;align-items:flex-start !important;gap:10px}
+
+    #areas-cards > div, .about-stats > div, #method-steps > div, .contact-row > div, .footer-grid > div{min-width:0 !important}
   }
 </style>
 </head>
@@ -101,14 +122,30 @@
     <a href="#partners" style="font-family:'Cinzel',serif;font-weight:400;letter-spacing:.22em;font-size:11px;text-transform:uppercase;color:#b8b0a0">Parceiros</a>
     <a href="#contact" style="font-family:'Cinzel',serif;font-weight:400;letter-spacing:.22em;font-size:11px;text-transform:uppercase;color:#b8b0a0">Contato</a>
   </div>
-  <span style="position:relative;display:inline-flex">
-    <span style="position:absolute;inset:-10px;border-radius:999px;background:radial-gradient(circle,rgba(37,211,102,.55),transparent 70%);animation:waGlow 2.2s ease-in-out infinite;pointer-events:none"></span>
-    <a href="#" class="wa-link nav-wa-btn" target="_blank" rel="noopener" style="position:relative;z-index:1;font-family:'Cinzel',serif;letter-spacing:.14em;font-size:11px;text-transform:uppercase;background:#25D366;color:#fff;padding:10px 20px 10px 12px;border-radius:999px;display:flex;align-items:center;gap:9px">
-      <svg viewBox="0 0 32 32" width="20" height="20"><path d="M16 4C9.4 4 4 9.4 4 16c0 2.4.7 4.6 1.9 6.5L4 28l5.7-1.8A11.9 11.9 0 0 0 16 28c6.6 0 12-5.4 12-12S22.6 4 16 4z" fill="#fff"></path><path d="M22 19.3c-.3-.2-2-1-2.3-1.1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-1.6-.8-2.7-1.4-3.8-3.2-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.4z" fill="#25D366"></path></svg>
-      WhatsApp
-    </a>
-  </span>
+  <div style="display:flex;align-items:center;gap:16px">
+    <span style="position:relative;display:inline-flex">
+      <span style="position:absolute;inset:-10px;border-radius:999px;background:radial-gradient(circle,rgba(37,211,102,.55),transparent 70%);animation:waGlow 2.2s ease-in-out infinite;pointer-events:none"></span>
+      <a href="#" class="wa-link nav-wa-btn" target="_blank" rel="noopener" style="position:relative;z-index:1;font-family:'Cinzel',serif;letter-spacing:.14em;font-size:11px;text-transform:uppercase;background:#25D366;color:#fff;padding:10px 20px 10px 12px;border-radius:999px;display:flex;align-items:center;gap:9px">
+        <svg viewBox="0 0 32 32" width="20" height="20"><path d="M16 4C9.4 4 4 9.4 4 16c0 2.4.7 4.6 1.9 6.5L4 28l5.7-1.8A11.9 11.9 0 0 0 16 28c6.6 0 12-5.4 12-12S22.6 4 16 4z" fill="#fff"></path><path d="M22 19.3c-.3-.2-2-1-2.3-1.1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-1.6-.8-2.7-1.4-3.8-3.2-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.4z" fill="#25D366"></path></svg>
+        WhatsApp
+      </a>
+    </span>
+    <button id="navToggle" class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+  </div>
 </nav>
+
+<div id="mobileMenu" class="mobile-menu">
+  <a href="#manifesto">Início</a>
+  <a href="#manifesto">Quem somos</a>
+  <a href="#areas">Serviços</a>
+  <a href="#method">Método</a>
+  <a href="#partners">Parceiros</a>
+  <a href="#contact">Contato</a>
+</div>
 
 <section id="top" style="position:relative;min-height:100vh;display:grid;grid-template-columns:1.05fr 1fr;align-items:center;padding:140px 56px 80px;overflow:hidden;background:radial-gradient(120% 80% at 70% 30%,#1a1814 0%,#0a0a0a 60%)">
   <div style="position:absolute;inset:0;background-image:url('assets/hero-texture.png');background-size:cover;background-position:center;opacity:.55;mix-blend-mode:screen;pointer-events:none"></div>
@@ -440,6 +477,29 @@
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  var navToggle = document.getElementById('navToggle');
+  var mobileMenu = document.getElementById('mobileMenu');
+  if (navToggle && mobileMenu) {
+    var closeMenu = function () {
+      mobileMenu.classList.remove('open');
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+    navToggle.addEventListener('click', function () {
+      var isOpen = mobileMenu.classList.toggle('open');
+      navToggle.classList.toggle('open', isOpen);
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+    mobileMenu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 1180) closeMenu();
+    });
+  }
 })();
 </script>
 
