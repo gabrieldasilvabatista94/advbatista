@@ -114,14 +114,14 @@
   .km:not(.km-static) .km-stage{display:grid;place-items:center;text-align:center;min-height:420px;padding:20px 0;font-family:Cambria,Georgia,'Times New Roman',serif;font-weight:700;text-transform:uppercase;color:#fff;font-size:clamp(30px,3.6vw,54px);line-height:1.02;overflow:hidden}
   .km:not(.km-static) .km-ui{display:flex;align-items:center;gap:18px;margin-top:8px}
   .km-chunk{grid-area:1/1;display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:.04em;max-width:100%}
-  .km-line{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 .3em;line-height:1.02;overflow:hidden;padding:.06em 0}
-  .km-w{display:inline-block;max-width:100%;overflow-wrap:anywhere;transform:translateY(110%);animation:kmRollIn .5s cubic-bezier(.2,.85,.25,1) both;animation-delay:calc(var(--i) * 80ms)}
-  .km-chunk.out .km-w{animation:kmRollOut .38s cubic-bezier(.55,0,.8,.4) both;animation-delay:calc(var(--i) * 30ms)}
+  .km-line{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 .3em;line-height:1.02}
+  .km-w{display:inline-block;max-width:100%;overflow-wrap:anywhere;opacity:0;animation:kmFadeIn .25s ease-out both;animation-delay:calc(var(--i) * 50ms)}
+  .km-chunk.out .km-w{animation:kmFadeOut .2s ease-in both;animation-delay:0s}
   .km-w.small{font-size:.72em;color:#d9d2c0}
   .km-w.mid{font-size:1em}
   .km-w.big{font-size:1.3em;color:#c9a14a}
-  @keyframes kmRollIn{from{transform:translateY(110%)}to{transform:translateY(0)}}
-  @keyframes kmRollOut{from{transform:translateY(0)}to{transform:translateY(-110%)}}
+  @keyframes kmFadeIn{from{opacity:0}to{opacity:1}}
+  @keyframes kmFadeOut{from{opacity:1}to{opacity:0}}
   .km-bar{flex:1;height:2px;background:#2a2620}
   .km-bar span{display:block;height:100%;width:0;background:#c9a14a}
   .km-btn{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#c9a14a;background:transparent;border:1px solid #3a3328;padding:10px 16px;cursor:pointer}
@@ -524,7 +524,7 @@
     Array.prototype.slice.call(stage.children).forEach(function (old) {
       if (old.classList.contains('out')) return;
       old.classList.add('out');
-      setTimeout(function () { if (old.parentNode) old.parentNode.removeChild(old); }, 700);
+      setTimeout(function () { if (old.parentNode) old.parentNode.removeChild(old); }, 300);
     });
   }
   function show(frame) {
