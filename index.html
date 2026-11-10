@@ -105,6 +105,24 @@
 
     #areas-cards > div, .about-stats > div, #method-steps > div, .contact-row > div, .footer-grid > div{min-width:0 !important}
   }
+
+  /* Manifesto — tipografia cinética */
+  .km-text p{font-family:'Inter',sans-serif;font-weight:300;font-size:18px;line-height:1.7;color:#efe7d4;margin:0 0 20px}
+  .km-text em{color:#c9a14a;font-weight:500}
+  .km-stage,.km-ui{display:none}
+  .km:not(.km-static) .km-text{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .km:not(.km-static) .km-stage{display:flex;align-items:center;justify-content:center;text-align:center;min-height:340px;padding:20px 0;font-family:'Inter',sans-serif;color:#b8b0a0;font-size:clamp(20px,2.2vw,28px);overflow:hidden}
+  .km:not(.km-static) .km-ui{display:flex;align-items:center;gap:18px;margin-top:8px}
+  .km-chunk{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:center;gap:.15em .35em;max-width:100%}
+  .km-w{display:inline-block;font-weight:300;font-size:.8em;color:#b8b0a0;opacity:0;transform:translateY(14px) scale(.7);animation:kmPop .45s cubic-bezier(.2,1.5,.4,1) forwards;animation-delay:calc(var(--i) * 90ms)}
+  .km-w.big{font-size:2.4em;font-weight:800;line-height:1.05;color:#c9a14a;letter-spacing:-.01em;transform:translateY(0) scale(.45)}
+  .km-chunk.out .km-w{animation:kmOut .22s ease forwards;animation-delay:0s}
+  @keyframes kmPop{to{opacity:1;transform:none}}
+  @keyframes kmOut{from{opacity:1;transform:none}to{opacity:0;transform:translateY(-10px) scale(.96)}}
+  .km-bar{flex:1;height:2px;background:#2a2620}
+  .km-bar span{display:block;height:100%;width:0;background:#c9a14a}
+  .km-btn{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#c9a14a;background:transparent;border:1px solid #3a3328;padding:10px 16px;cursor:pointer}
+  @media (max-width:640px){.km:not(.km-static) .km-stage{min-height:300px}.km-w.big{font-size:2em}}
 </style>
 </head>
 <body>
@@ -192,10 +210,16 @@
       <h3 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-style:italic;font-size:36px;color:#c9a14a;line-height:1.15;margin:0">O cidadão<br>vem antes<br>do Estado.</h3>
     </div>
     <div>
-      <div class="manifesto-copy" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(26px,2.2vw,34px);line-height:1.4;color:#efe7d4;letter-spacing:-.005em">
-        <span class="manifesto-dropcap" style="font-family:'Cinzel',serif;font-weight:600;font-size:84px;float:left;line-height:.85;margin:6px 18px 0 0;color:#c9a14a">N</span>asce a República para servir o cidadão — e não o contrário. Quando o Estado avança sobre a propriedade, sobre o negócio honesto, sobre a vida privada do brasileiro, alguém precisa <strong style="color:#c9a14a;font-weight:500;font-style:italic">opor-lhe limite</strong>. É essa a vocação deste escritório.
-        <br><br>
-        Trabalhamos onde o poder público insiste em exceder seus próprios limites: na cobrança tributária que ignora a Constituição, no banco que se vale da máquina pública para constranger, na licença que se transforma em embaraço, na sanção que se confunde com confisco. Defendemos quem produz, quem empreende e quem apenas quer ser deixado em paz.
+      <div id="km" class="km km-static" aria-label="Manifesto">
+        <div class="km-text">
+          <p>Nasce a República para servir o cidadão — e não o contrário. Quando o Estado avança sobre a propriedade, sobre o negócio honesto, sobre a vida privada do brasileiro, alguém precisa <em>opor-lhe limite</em>. É essa a vocação deste escritório.</p>
+          <p>Trabalhamos onde o poder público insiste em exceder seus próprios limites: na cobrança tributária que ignora a Constituição, no banco que se vale da máquina pública para constranger, na licença que se transforma em embaraço, na sanção que se confunde com confisco. Defendemos quem produz, quem empreende e quem apenas quer ser deixado em paz.</p>
+        </div>
+        <div class="km-stage" aria-hidden="true"></div>
+        <div class="km-ui" aria-hidden="true">
+          <div class="km-bar"><span></span></div>
+          <button type="button" class="km-btn" aria-label="Pausar ou reiniciar a animação">Pausar</button>
+        </div>
       </div>
     </div>
   </div>
@@ -459,6 +483,69 @@
 
 </div>
 
+<script>
+(function () {
+  var km = document.getElementById('km');
+  if (!km) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var stage = km.querySelector('.km-stage'), bar = km.querySelector('.km-bar span'), btn = km.querySelector('.km-btn');
+  // "|" separa os blocos; *palavra* = destaque
+  var chunks = ('Nasce a República|para servir o *cidadão*|— e não o *contrário*.|Quando o *Estado*|avança sobre|a *propriedade*,|sobre o *negócio honesto*,|sobre a *vida privada*|do brasileiro,|alguém precisa|*opor-lhe limite*.|É essa a *vocação*|deste escritório.|' +
+    'Trabalhamos onde|o *poder público*|insiste em exceder|seus próprios *limites*:|na cobrança *tributária*|que ignora a *Constituição*,|no *banco* que se vale|da máquina pública|para *constranger*,|na *licença*|que se transforma|em *embaraço*,|na *sanção*|que se confunde|com *confisco*.|Defendemos|quem *produz*,|quem *empreende*|e quem apenas|quer ser deixado|em *paz*.').split('|');
+  function dur(c) {
+    var t = c.replace(/\*/g, ''), d = 650 + 75 * t.length;
+    if (/[.:]$/.test(t)) d += 500; else if (/,$/.test(t)) d += 200;
+    if (/escritório\.$/.test(t)) d += 800;
+    return d;
+  }
+  var total = chunks.reduce(function (a, c) { return a + dur(c); }, 0);
+  var i = 0, elapsed = 0, timer = null, visible = false, paused = false, finished = false;
+
+  function show(c) {
+    var wrap = document.createElement('div');
+    wrap.className = 'km-chunk';
+    var n = 0;
+    c.split(' ').forEach(function (w) {
+      var big = w.indexOf('*') > -1, span = document.createElement('span');
+      span.className = 'km-w' + (big ? ' big' : '');
+      span.style.setProperty('--i', n++);
+      span.textContent = w.replace(/\*/g, '');
+      wrap.appendChild(span);
+    });
+    stage.innerHTML = '';
+    stage.appendChild(wrap);
+  }
+  function next() {
+    timer = null;
+    if (!visible || paused) return;
+    if (i >= chunks.length) { finished = true; btn.textContent = 'Reiniciar'; bar.style.width = '100%'; return; }
+    var c = chunks[i++], d = dur(c);
+    show(c);
+    bar.style.width = (elapsed / total * 100) + '%';
+    elapsed += d;
+    var out = d - 220;
+    timer = setTimeout(function () {
+      var cur = stage.firstChild; if (cur) cur.classList.add('out');
+      timer = setTimeout(next, 220);
+    }, out);
+  }
+  function resume() { if (!timer && visible && !paused && !finished) next(); }
+  function stop() { if (timer) { clearTimeout(timer); timer = null; } }
+
+  km.classList.remove('km-static');
+  btn.textContent = 'Pausar';
+  btn.addEventListener('click', function () {
+    if (finished) { finished = false; i = 0; elapsed = 0; paused = false; btn.textContent = 'Pausar'; bar.style.width = '0'; next(); return; }
+    paused = !paused;
+    btn.textContent = paused ? 'Continuar' : 'Pausar';
+    if (paused) stop(); else { if (i > 0) i--, elapsed -= dur(chunks[i]); next(); }
+  });
+  new IntersectionObserver(function (e) {
+    visible = e[0].isIntersecting;
+    if (visible) { if (!paused && !finished && !timer) { if (i > 0) i--, elapsed -= dur(chunks[i]); next(); } } else { stop(); }
+  }, { threshold: 0.45 }).observe(km);
+})();
+</script>
 <script>
 (function () {
   var WHATSAPP_NUMBER = '5567998809977';
