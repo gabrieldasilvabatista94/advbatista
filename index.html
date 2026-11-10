@@ -111,7 +111,7 @@
   .km-text em{color:#c9a14a;font-style:normal}
   .km-stage,.km-ui{display:none}
   .km:not(.km-static) .km-text{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-  .km:not(.km-static) .km-stage{display:flex;align-items:center;justify-content:center;text-align:center;min-height:420px;padding:20px 0;font-family:Cambria,Georgia,'Times New Roman',serif;font-weight:700;text-transform:uppercase;color:#fff;font-size:clamp(30px,3.6vw,54px);line-height:1.02;overflow:hidden}
+  .km:not(.km-static) .km-stage{display:flex;align-items:center;justify-content:center;text-align:center;min-height:380px;padding:20px 0;font-family:Cambria,Georgia,'Times New Roman',serif;font-weight:700;text-transform:uppercase;color:#fff;font-size:clamp(30px,3.6vw,54px);line-height:1.02;overflow:hidden}
   .km:not(.km-static) .km-ui{display:flex;align-items:center;gap:18px;margin-top:8px}
   .km-chunk{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:.04em;max-width:100%}
   .km-line{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 .3em;line-height:1.02}
@@ -123,7 +123,7 @@
   .km-bar{flex:1;height:2px;background:#2a2620}
   .km-bar span{display:block;height:100%;width:0;background:#c9a14a}
   .km-btn{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#c9a14a;background:transparent;border:1px solid #3a3328;padding:10px 16px;cursor:pointer}
-  @media (max-width:640px){.km:not(.km-static) .km-stage{min-height:340px;font-size:clamp(26px,8vw,38px)}}
+  @media (max-width:640px){.km:not(.km-static) .km-stage{min-height:320px;font-size:clamp(26px,8vw,38px)}}
 </style>
 </head>
 <body>
@@ -497,11 +497,11 @@
     'Trabalhamos onde o *poder público* insiste em exceder seus próprios limites: na cobrança *tributária* que ignora a *Constituição*, no *banco* que se vale da máquina pública para *constranger*, na licença que se transforma em *embaraço*, na sanção que se confunde com *confisco*. ' +
     'Defendemos quem *produz*, quem *empreende* e quem apenas quer ser deixado em *paz*.';
   var allWords = text.split(/\s+/);
-  // agrupa em quadros de até 6 palavras, quebrando em pontuação
+  // agrupa em quadros de até 5 palavras, quebrando em pontuação
   var words = [], cur = [];
   allWords.forEach(function (w) {
     cur.push(w);
-    if (cur.length >= 6 || /[.,:;]\*?$/.test(w)) { words.push(cur.join(' ')); cur = []; }
+    if (cur.length >= 5 || /[.,:;]\*?$/.test(w)) { words.push(cur.join(' ')); cur = []; }
   });
   if (cur.length) words.push(cur.join(' '));
   function clean(w) { return w.replace(/\*/g, ''); }
