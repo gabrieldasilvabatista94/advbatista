@@ -111,17 +111,18 @@
   .km-text em{color:#c9a14a;font-style:normal}
   .km-stage,.km-ui{display:none}
   .km:not(.km-static) .km-text{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-  .km:not(.km-static) .km-stage{display:flex;align-items:center;justify-content:center;text-align:center;min-height:340px;padding:20px 0;font-family:Cambria,Georgia,'Times New Roman',serif;font-weight:700;text-transform:uppercase;color:#fff;font-size:clamp(28px,3.6vw,52px);line-height:1.1;overflow:hidden}
+  .km:not(.km-static) .km-stage{display:flex;align-items:center;justify-content:center;text-align:center;min-height:340px;padding:20px 0;font-family:Cambria,Georgia,'Times New Roman',serif;font-weight:700;text-transform:uppercase;color:#fff;font-size:clamp(26px,3vw,44px);line-height:1.15;overflow:hidden}
   .km:not(.km-static) .km-ui{display:flex;align-items:center;gap:18px;margin-top:8px}
-  .km-w{display:inline-block;max-width:100%;overflow-wrap:anywhere;opacity:0;animation:kmPop .14s ease-out forwards}
+  .km-chunk{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:center;gap:.12em .3em;max-width:100%}
+  .km-w{display:inline-block;max-width:100%;overflow-wrap:anywhere;opacity:0;animation:kmPop .16s ease-out forwards;animation-delay:calc(var(--i) * 60ms)}
   .km-w.small{font-size:.62em;color:#d9d2c0}
   .km-w.mid{font-size:1em}
-  .km-w.big{font-size:1.5em;color:#c9a14a}
+  .km-w.big{font-size:1.4em;color:#c9a14a}
   @keyframes kmPop{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
   .km-bar{flex:1;height:2px;background:#2a2620}
   .km-bar span{display:block;height:100%;width:0;background:#c9a14a}
   .km-btn{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#c9a14a;background:transparent;border:1px solid #3a3328;padding:10px 16px;cursor:pointer}
-  @media (max-width:640px){.km:not(.km-static) .km-stage{min-height:260px;font-size:clamp(24px,8vw,36px)}}
+  @media (max-width:640px){.km:not(.km-static) .km-stage{min-height:260px;font-size:clamp(22px,7vw,32px)}}
 </style>
 </head>
 <body>
@@ -494,23 +495,36 @@
     'É essa a *vocação* deste escritório. ' +
     'Trabalhamos onde o *poder público* insiste em exceder seus próprios limites: na cobrança *tributária* que ignora a *Constituição*, no *banco* que se vale da máquina pública para *constranger*, na licença que se transforma em *embaraço*, na sanção que se confunde com *confisco*. ' +
     'Defendemos quem *produz*, quem *empreende* e quem apenas quer ser deixado em *paz*.';
-  var words = text.split(/\s+/);
+  var allWords = text.split(/\s+/);
+  // agrupa em quadros de até 4 palavras, quebrando em pontuação
+  var words = [], cur = [];
+  allWords.forEach(function (w) {
+    cur.push(w);
+    if (cur.length >= 4 || /[.,:;]\*?$/.test(w)) { words.push(cur.join(' ')); cur = []; }
+  });
+  if (cur.length) words.push(cur.join(' '));
   function clean(w) { return w.replace(/\*/g, ''); }
   function dur(w) {
-    var t = clean(w), d = Math.max(330, 260 + 45 * t.length);
-    if (/[.:]$/.test(t)) d += 450; else if (/[,;]$/.test(t)) d += 200;
+    var t = clean(w), d = Math.max(1000, 450 + 62 * t.length);
+    if (/[.:]$/.test(t)) d += 450; else if (/[,;]$/.test(t)) d += 150;
     if (/escritório\.$/.test(t)) d += 600;
     return d;
   }
   var total = words.reduce(function (a, w) { return a + dur(w); }, 0);
   var i = 0, elapsed = 0, timer = null, started = false, paused = false, finished = false;
 
-  function show(w) {
-    var t = clean(w), span = document.createElement('span');
-    span.className = 'km-w ' + (w.indexOf('*') > -1 ? 'big' : (t.replace(/[^A-Za-zÀ-ÿ]/g, '').length <= 3 ? 'small' : 'mid'));
-    span.textContent = t;
+  function show(frame) {
+    var wrap = document.createElement('div'), n = 0;
+    wrap.className = 'km-chunk';
+    frame.split(' ').forEach(function (w) {
+      var t = clean(w), span = document.createElement('span');
+      span.className = 'km-w ' + (w.indexOf('*') > -1 ? 'big' : (t.replace(/[^A-Za-zÀ-ÿ]/g, '').length <= 3 ? 'small' : 'mid'));
+      span.style.setProperty('--i', n++);
+      span.textContent = t;
+      wrap.appendChild(span);
+    });
     stage.innerHTML = '';
-    stage.appendChild(span);
+    stage.appendChild(wrap);
   }
   function next() {
     timer = null;
