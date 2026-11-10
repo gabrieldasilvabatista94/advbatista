@@ -107,22 +107,22 @@
   }
 
   /* Manifesto — tipografia cinética */
-  .km-text p{font-family:'Inter',sans-serif;font-weight:300;font-size:18px;line-height:1.7;color:#efe7d4;margin:0 0 20px}
+  .km-text p{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(26px,2.2vw,34px);line-height:1.4;color:#efe7d4;margin:0 0 20px}
   .km-text em{color:#c9a14a;font-weight:500}
   .km-stage,.km-ui{display:none}
   .km:not(.km-static) .km-text{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-  .km:not(.km-static) .km-stage{display:flex;align-items:center;justify-content:center;text-align:center;min-height:340px;padding:20px 0;font-family:'Inter',sans-serif;color:#b8b0a0;font-size:clamp(20px,2.2vw,28px);overflow:hidden}
+  .km:not(.km-static) .km-stage{display:flex;align-items:center;justify-content:center;text-align:center;min-height:340px;padding:20px 0;font-family:'Cormorant Garamond',serif;color:#efe7d4;font-size:clamp(24px,2.6vw,34px);line-height:1.35;overflow:hidden}
   .km:not(.km-static) .km-ui{display:flex;align-items:center;gap:18px;margin-top:8px}
-  .km-chunk{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:center;gap:.15em .35em;max-width:100%}
-  .km-w{display:inline-block;font-weight:300;font-size:.8em;color:#b8b0a0;opacity:0;transform:translateY(14px) scale(.7);animation:kmPop .45s cubic-bezier(.2,1.5,.4,1) forwards;animation-delay:calc(var(--i) * 90ms)}
-  .km-w.big{font-size:2.4em;font-weight:800;line-height:1.05;color:#c9a14a;letter-spacing:-.01em;transform:translateY(0) scale(.45)}
+  .km-chunk{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:center;gap:.1em .3em;max-width:100%}
+  .km-w{display:inline-block;font-weight:300;font-size:1em;color:#efe7d4;opacity:0;transform:translateY(14px) scale(.7);animation:kmPop .45s cubic-bezier(.2,1.5,.4,1) forwards;animation-delay:calc(var(--i) * 70ms)}
+  .km-w.big{font-size:1.45em;font-weight:600;line-height:1.05;color:#c9a14a;transform:translateY(0) scale(.5)}
   .km-chunk.out .km-w{animation:kmOut .22s ease forwards;animation-delay:0s}
   @keyframes kmPop{to{opacity:1;transform:none}}
   @keyframes kmOut{from{opacity:1;transform:none}to{opacity:0;transform:translateY(-10px) scale(.96)}}
   .km-bar{flex:1;height:2px;background:#2a2620}
   .km-bar span{display:block;height:100%;width:0;background:#c9a14a}
   .km-btn{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#c9a14a;background:transparent;border:1px solid #3a3328;padding:10px 16px;cursor:pointer}
-  @media (max-width:640px){.km:not(.km-static) .km-stage{min-height:300px}.km-w.big{font-size:2em}}
+  @media (max-width:640px){.km:not(.km-static) .km-stage{min-height:300px}.km-w.big{font-size:1.3em}}
 </style>
 </head>
 <body>
@@ -490,10 +490,19 @@
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var stage = km.querySelector('.km-stage'), bar = km.querySelector('.km-bar span'), btn = km.querySelector('.km-btn');
   // "|" separa os blocos; *palavra* = destaque
-  var chunks = ('Nasce a República|para servir o *cidadão*|— e não o *contrário*.|Quando o *Estado*|avança sobre|a *propriedade*,|sobre o *negócio honesto*,|sobre a *vida privada*|do brasileiro,|alguém precisa|*opor-lhe limite*.|É essa a *vocação*|deste escritório.|' +
-    'Trabalhamos onde|o *poder público*|insiste em exceder|seus próprios *limites*:|na cobrança *tributária*|que ignora a *Constituição*,|no *banco* que se vale|da máquina pública|para *constranger*,|na *licença*|que se transforma|em *embaraço*,|na *sanção*|que se confunde|com *confisco*.|Defendemos|quem *produz*,|quem *empreende*|e quem apenas|quer ser deixado|em *paz*.').split('|');
+  var chunks = [
+    'Nasce a República para servir o *cidadão* — e não o contrário.',
+    'Quando o *Estado* avança sobre a *propriedade*, sobre o negócio honesto,',
+    'sobre a vida privada do brasileiro, alguém precisa *opor-lhe limite*.',
+    'É essa a *vocação* deste escritório.',
+    'Trabalhamos onde o *poder público* insiste em exceder seus próprios limites:',
+    'na cobrança *tributária* que ignora a *Constituição*,',
+    'no *banco* que se vale da máquina pública para *constranger*,',
+    'na licença que se transforma em *embaraço*, na sanção que se confunde com *confisco*.',
+    'Defendemos quem *produz*, quem *empreende* e quem apenas quer ser deixado em *paz*.'
+  ];
   function dur(c) {
-    var t = c.replace(/\*/g, ''), d = 650 + 75 * t.length;
+    var t = c.replace(/\*/g, ''), d = 900 + 62 * t.length;
     if (/[.:]$/.test(t)) d += 500; else if (/,$/.test(t)) d += 200;
     if (/escritório\.$/.test(t)) d += 800;
     return d;
