@@ -38,6 +38,10 @@
   footer li a:hover,.contact-row a:hover{color:#c9a14a !important}
   .hero-ctas a:focus-visible,#areas-cards a:focus-visible,footer li a:focus-visible,.contact-row a:focus-visible{outline:2px solid #c9a14a;outline-offset:3px}
 
+  /* ===== Aparição em sequência ao rolar ===== */
+  .rv{opacity:0;transform:translateY(18px);transition:opacity .45s ease,transform .45s ease}
+  .rv.in{opacity:1;transform:none}
+
   /* ===== MENU MOBILE ===== */
   .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:34px;height:34px;background:transparent;border:none;cursor:pointer;padding:0;flex:0 0 auto}
   .nav-toggle-bar{display:block;width:100%;height:2px;background:#c9a14a;transition:transform .25s ease,opacity .25s ease}
@@ -629,5 +633,28 @@
 })();
 </script>
 
+<script>
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var groups = ['#manifesto-pillars', '#areas-cards', '.about-stats', '#method-steps', '#partners-grid'];
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      io.unobserve(e.target);
+      Array.prototype.forEach.call(e.target.children, function (c, i) {
+        c.style.transitionDelay = (i * 110) + 'ms';
+        c.classList.add('in');
+      });
+    });
+  }, { threshold: 0.15 });
+  groups.forEach(function (sel) {
+    var g = document.querySelector(sel);
+    if (!g) return;
+    Array.prototype.forEach.call(g.children, function (c) { c.classList.add('rv'); });
+    io.observe(g);
+  });
+})();
+</script>
 </body>
 </html>
